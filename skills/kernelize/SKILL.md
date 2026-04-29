@@ -16,20 +16,20 @@ which kernelizer-rs
 ```
 
 If `which` returns nothing, instruct the user:
-> `kernelizer-rs` is not in PATH. Run `cargo install --path /path/to/kernelizer` or ensure `~/.cargo/bin` is in your PATH.
+> `kernelizer-rs` is not in PATH. Run `cargo install --git https://github.com/Omkar1279/kernelizer kernelizer-rs` or ensure `~/.cargo/bin` is in your PATH.
 
 ## STEP 2 — Run the optimizer
 
 Run **exactly this command** — nothing else before it:
 
 ```bash
-kernelizer-rs optimize "$ARGUMENTS" --context
+kernelizer-rs optimize "$ARGUMENTS"
 ```
 
 ## STEP 3 — Execute the KERNEL output
 
 1. Read `stdout` from the command. It will be a KERNEL Markdown template with:
-   - `# Context (input)`: Local AST file chunks and retrieved codebase context.
+   - `# Context (input)`: Content of explicitly tagged `@file`/`@dir` paths and relevant codebase pattern snippets.
    - `# Task (function)`: The user's goal.
    - `# Constraints (parameters)`: Strict behavioral rules.
    - `# Format (output)`: The expected structure.

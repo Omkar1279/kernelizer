@@ -2,7 +2,7 @@
   "name": "kernelizer",
   "version": "1.0.0",
   "description": "Intercepts and translates unstructured prompts into the token-efficient KERNEL format before sending them to the LLM.",
-  "author": "PlugForge",
+  "author": "Om",
   "commands": "commands/",
   "settings": []
 }
