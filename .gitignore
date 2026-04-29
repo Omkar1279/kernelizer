@@ -1,0 +1,14 @@
+/target/
+/vendor/
+LOCAL_USAGE.md
+CLAUDE.md
+
+# LanceDB / vector search cache (future RAG integration, not yet implemented)
+.lancedb/
+.fastembed_cache/
+
+# Claude Code machine-specific settings (contains local paths/permissions)
+.claude
+
+# macOS
+.DS_Store

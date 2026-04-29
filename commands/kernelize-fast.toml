@@ -1,0 +1,5 @@
+description = "Instantly formats your prompt into the KERNEL structure — skips LLM translation for maximum speed. Best when @file tags are present and the task is unambiguous."
+
+prompt = """
+!{kernelizer-rs optimize --fast "{{args}}"}
+"""

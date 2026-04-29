@@ -1,0 +1,6 @@
+{
+  "name": "claude-plugin-kernelizer",
+  "version": "1.0.0",
+  "description": "Native slash command to intercept and optimize prompts inside Claude Code sessions using Kernelizer.",
+  "author": "Om"
+}

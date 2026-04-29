@@ -1,0 +1,5 @@
+description = "Instantly formats your prompt into the KERNEL structure using a fast LLM persona. Ideal for improving accuracy and reducing tokens."
+
+prompt = """
+!{kernelizer-rs optimize "{{args}}"}
+"""
