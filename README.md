@@ -5,13 +5,12 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Built with Rust](https://img.shields.io/badge/built%20with-Rust-orange.svg)](https://www.rust-lang.org)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-plugin-blueviolet)](https://github.com/Omkar1279/kernelizer)
-[![Gemini Extension](https://img.shields.io/badge/Gemini%20CLI-extension-blue)](https://github.com/Omkar1279/kernelizer)
 
 Kernelizer intercepts your prompt before it reaches the model and compiles it into a structured **KERNEL** template — a strict `Task / Constraints / Format / Verify` layout that eliminates ambiguity.
 
 Research confirms the payoff: **structured prompts improve code generation accuracy by up to 20 percentage points** ([arXiv:2411.10541](https://arxiv.org/abs/2411.10541)) and **reduce total token consumption by up to 40%** by cutting the clarification rounds that vague prompts force. Fewer tokens. Right answer first time.
 
-No API keys. No new accounts. Uses your existing `gemini` or `claude` CLI.
+No API keys. No new accounts. Uses your existing Claude Code session.
 
 ---
 
@@ -39,18 +38,6 @@ claude plugin add https://github.com/Omkar1279/kernelizer
 ```
 /kernelize fix the auth bug in @src/auth.rs
 /kernelize-fast add rate limiting to @accounts/views.py
-```
-
----
-
-## Gemini CLI
-
-```bash
-gemini extensions install https://github.com/Omkar1279/kernelizer
-```
-
-```
-/kernelize suggest an indexing strategy for @src/db.rs
 ```
 
 ---
@@ -101,19 +88,19 @@ The model sees an unambiguous specification instead of a request. No follow-up q
 ```
 raw prompt + @file tags
         │
-        ├─ resolve @file / @dir content        (~1ms, local)
+        ├─ resolve @file / @dir content             (~1ms, local)
         │
-        ├─ scan codebase for patterns ──┐
-        ├─ translate via gemini/claude  ─┘  parallel  (~2–5s)
+        ├─ tree-sitter repo map ──┐
+        ├─ translate via Haiku   ─┘  parallel  (~2–4s)
         │
         └─ compile KERNEL markdown  ──▶  stdout  ──▶  model
 ```
 
-**Codebase-aware** — automatically scans your project and injects relevant patterns as context so the model understands your existing style.
+**Tree-sitter repo map** — parses every source file with a real AST parser (Python, Rust, TypeScript, JavaScript, Go) and extracts all function/class/struct signatures. The translation model sees the full project structure so constraints reference real function names and file paths — not generic rules.
 
-**Explicit vs advisory patterns** — if your prompt says *"like we do"* or *"our pattern"*, the KERNEL enforces strict project-style adherence. Otherwise patterns are advisory and the model is free to improve on them.
+**Explicit vs advisory patterns** — if your prompt says *"like we do"* or *"our pattern"*, the KERNEL enforces strict project-style adherence. Otherwise the model is free to improve on existing patterns.
 
-**Graceful degradation** — if neither `gemini` nor `claude` CLI is available, falls back to a deterministic offline template instantly.
+**Graceful degradation** — if `claude` CLI is unavailable, falls back to a deterministic offline template instantly.
 
 ---
 

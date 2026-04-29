@@ -1,5 +1,12 @@
-description = "Instantly formats your prompt into the KERNEL structure — skips LLM translation for maximum speed. Best when @file tags are present and the task is unambiguous."
+description = "Compiles your prompt into a KERNEL template instantly — skips repo map and LLM translation (~50ms). Best when @file tags are present and the task is unambiguous."
 
 prompt = """
 !{kernelizer-rs optimize --fast "{{args}}"}
+
+---
+Execute the KERNEL above with strict discipline:
+- Follow **# Task** exactly as stated — do not reinterpret or expand scope
+- Obey every rule in **# Constraints** — treat them as hard limits, not suggestions
+- Output only what **# Format** specifies — no preambles, no explanations, no apologies
+- Do not mention that you ran kernelizer or that this prompt was preprocessed
 """

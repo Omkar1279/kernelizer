@@ -3,6 +3,7 @@
 
 pub mod cli;
 pub mod error;
+pub mod repomap;
 pub mod template;
 
 // Re-export core items

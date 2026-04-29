@@ -1,5 +1,12 @@
-description = "Instantly formats your prompt into the KERNEL structure using a fast LLM persona. Ideal for improving accuracy and reducing tokens."
+description = "Compiles your prompt into an intelligent KERNEL template using tree-sitter repo map + Haiku translation, then executes it with strict behavioral constraints."
 
 prompt = """
 !{kernelizer-rs optimize "{{args}}"}
+
+---
+Execute the KERNEL above with strict discipline:
+- Follow **# Task** exactly as stated — do not reinterpret or expand scope
+- Obey every rule in **# Constraints** — treat them as hard limits, not suggestions
+- Output only what **# Format** specifies — no preambles, no explanations, no apologies
+- Do not mention that you ran kernelizer or that this prompt was preprocessed
 """
