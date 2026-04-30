@@ -162,7 +162,7 @@ pub async fn translate_with_cli(
     let system_prompt = "You are an expert Prompt Engineer. Convert the user's vague request into strict KERNEL framework parameters. Use the Repo Map and File Context to make constraints and verify criteria specific to the actual codebase — reference real function names, file paths, and types where relevant. Rules: Task: single unambiguous goal. Constraints: infer technical constraints (max 4) — be specific to the code provided. Format: exact output structure. Verify: how to test this with real code paths. Respond ONLY in JSON matching this schema: {\"task\":\"...\",\"constraints\":[\"...\"],\"format\":\"...\",\"verify\":\"...\"}. Do not use markdown blocks, output raw JSON.";
 
     const FILE_CONTEXT_CAP: usize = 2_000;
-    const REPO_MAP_CAP: usize = 2_000;
+    const REPO_MAP_CAP: usize = 3_000;
 
     let file_ctx = cap_at_char_boundary(file_context, FILE_CONTEXT_CAP);
     let repo_ctx = cap_at_char_boundary(repo_map, REPO_MAP_CAP);
